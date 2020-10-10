@@ -1,0 +1,6 @@
+name: CI
+
+# prettier-ignore
+on:
+  push:
+    branches: [main]
