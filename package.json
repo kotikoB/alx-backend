@@ -8,15 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sadick254/case-management-backend.git"
+    "url": "git+https://github.com/kotikoB/alx-backend.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sadick254/case-management-backend/issues"
+    "url": "https://github.com/kotikoB/alx-backend/issues"
   },
-  "homepage": "https://github.com/sadick254/case-management-backend#readme",
+  "homepage": "https://https://github.com/kotikoB/alx-backend#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "sequelize": "^6.3.5"
   }
 }
