@@ -3,20 +3,20 @@ const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
+dotenv.config();
+
 const PORT = process.env.PORT;
 
 //routes
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/users');
 
-dotenv.config();
-
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
 
 // on successful connection
-db.on('error', console.error('Database connection failed!'));
+db.on('error', () => console.error('Database connection failed!'));
 
 // on failed connection
 db.once('open', () => console.log('Database connection successful!'));
