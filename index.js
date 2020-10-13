@@ -11,9 +11,15 @@ const userRoute = require('./routes/users');
 
 dotenv.config();
 
-mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true }, () =>
-    console.log('connected to db')
-);
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const db = mongoose.connection;
+
+// on successful connection
+db.on('error', console.error('Database connection failed!'));
+
+// on failed connection
+db.once('open', () => console.log('Database connection successful!'));
 
 //middleware
 app.use(express.json());
@@ -21,4 +27,4 @@ app.use(express.json());
 app.use('/api/user', authRoute);
 app.use('/api/users', userRoute);
 
-app.listen(3001, () => console.log(`Listening on port 3001...`));
+app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
