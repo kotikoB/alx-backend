@@ -8,6 +8,7 @@ dotenv.config();
 const PORT = process.env.PORT;
 
 //routes
+const rootRoute = require('./routes/home');
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/users');
 
@@ -24,6 +25,7 @@ db.once('open', () => console.log('Database connection successful!'));
 //middleware
 app.use(express.json());
 
+app.use('/', rootRoute);
 app.use('/api/user', authRoute);
 app.use('/api/users', userRoute);
 
