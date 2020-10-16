@@ -1,7 +1,10 @@
 const express = require('express');
+var cors = require('cors');
 const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+
+app.use(cors());
 
 dotenv.config();
 
@@ -25,7 +28,7 @@ db.once('open', () => console.log('Database connection successful!'));
 //middleware
 app.use(express.json());
 
-app.use('/', rootRoute);
+app.use('/api', rootRoute);
 app.use('/api/user', authRoute);
 app.use('/api/users', userRoute);
 

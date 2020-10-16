@@ -11,7 +11,8 @@ router.get('/', verify, (req, res) => {
 router.get('/random', verify, (req, res) => {
     axios
         .get('https://private-anon-c5c22c112b-kitsu.apiary-proxy.com/api/edge/anime')
-        .then((axres) => res.status(200).send(axres.data.data))
+        // select only four resources from url
+        .then((axres) => res.status(200).send(axres.data.data.slice(0, 4)))
         .catch((err) => console.error(err));
 });
 
