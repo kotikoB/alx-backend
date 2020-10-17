@@ -10,11 +10,6 @@ dotenv.config();
 
 const PORT = process.env.PORT;
 
-//routes
-const rootRoute = require('./routes/home');
-const authRoute = require('./routes/auth');
-const userRoute = require('./routes/users');
-
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
@@ -28,8 +23,9 @@ db.once('open', () => console.log('Database connection successful!'));
 //middleware
 app.use(express.json());
 
-app.use('/api', rootRoute);
-app.use('/api/user', authRoute);
-app.use('/api/users', userRoute);
+// route moddleware
+app.use('/api', require('./routes/home'));
+app.use('/api/user', require('./routes/auth'));
+app.use('/api/users', require('./routes/users'));
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
