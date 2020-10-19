@@ -23,7 +23,7 @@ db.once('open', () => console.log('Database connection successful!'));
 //middleware
 app.use(express.json());
 
-// route moddleware
+// route middleware
 app.use('/api', require('./routes/home'));
 app.use('/api/user', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));

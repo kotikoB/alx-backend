@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 // auth moddleware
 const auth = (req, res, next) => {
-    const token = req.header('token');
+    const token = req.header('Authorization');
     if (!token) return res.status(401).send('Access denied. Not authenticated!');
 
     try {
